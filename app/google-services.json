@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "217037461557",
+    "project_id": "queasily-9d95a",
+    "storage_bucket": "queasily-9d95a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:217037461557:android:42449cccfc52117da0b97c",
+        "android_client_info": {
+          "package_name": "com.example.queasily"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "217037461557-uodg3nehmk4584k27egeseivl9oo1es1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjy3xiCXDdo0SJe2gCozsKU6UqFFmaDgk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "217037461557-uodg3nehmk4584k27egeseivl9oo1es1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
