@@ -28,7 +28,9 @@ class Questions : AppCompatActivity() {
         val qno:Int = currIntent.getIntExtra("qno",0)
         val quizid:String? = currIntent.getStringExtra("quizid")
         val USERNAME:String? = currIntent.getStringExtra("USERNAME")
-       // logi.collection("p.sampreety@gmail.com").add(hashMapOf({"USERNAME" to "p.sampreety@gmail.com"}))
+
+//
+//       logi.collection("mail").add(hashMapOf("USERNAME" to "Sampreety" ))
 
 
 
