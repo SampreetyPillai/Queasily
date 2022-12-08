@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+        <item
+            android:id="@+id/upcoming_menu"
+            android:title="Upcoming Quizzes"
+            android:icon="@drawable/myquestionmark"/>
+
+    <item
+        android:id="@+id/past_menu"
+        android:title="Past Quizzes"
+        android:icon="@drawable/myquiz"
+        />
+
+    <item
+        android:id="@+id/missed_menu"
+        android:title="Missed Quizzes"
+        android:icon="@drawable/mymissed"/>
+
+    <item
+        android:id="@+id/dashboard_menu"
+        android:title="Dashboard"
+        android:icon="@drawable/mydashboard"/>
+
+
+
+</menu>
