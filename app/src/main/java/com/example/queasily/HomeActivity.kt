@@ -62,44 +62,68 @@ class HomeActivity : AppCompatActivity() {
 
        navigationView.setNavigationItemSelectedListener{item->
 
-           val data:Bundle?=null
-           data?.putString("USERNAME", USERNAME)
-           var myfragment:Fragment?=null
-           myfragment?.arguments = data
 
            val id:Int  = item.itemId
 
            when (id){
                R.id.upcoming_menu -> {
                    Toast.makeText(this, "Upcoming Quizes", Toast.LENGTH_SHORT).show()
-                   myfragment = dashboardFragment()
+                   val fragmentTransaction = supportFragmentManager.beginTransaction()
+                   val mfrag:Fragment = upcomingFragment()
+                   mfrag.arguments = data
 
-               }
+                   fragmentTransaction.replace(R.id.container, mfrag)
+                   fragmentTransaction.addToBackStack(null)
+                   fragmentTransaction.commit()
+                    }
                R.id.past_menu -> {
                    Toast.makeText(this, "Past quizes", Toast.LENGTH_SHORT).show()
-                   myfragment = dashboardFragment()
-               }
+                   val fragmentTransaction = supportFragmentManager.beginTransaction()
+                   val mfrag:Fragment = dashboardFragment()
+                   mfrag.arguments = data
+                   fragmentTransaction.replace(R.id.container, mfrag)
+                   fragmentTransaction.addToBackStack(null)
+                   fragmentTransaction.commit()
+                   }
                R.id.missed_menu -> {
                    Toast.makeText(this, "Missed Quizzes", Toast.LENGTH_SHORT).show()
-                   myfragment = dashboardFragment()
-               }
+                   val fragmentTransaction = supportFragmentManager.beginTransaction()
+                   val mfrag:Fragment = dashboardFragment()
+                   mfrag.arguments = data
+                   fragmentTransaction.replace(R.id.container, mfrag)
+                   fragmentTransaction.addToBackStack(null)
+                   fragmentTransaction.commit()
+                  }
                R.id.dashboard_menu -> {
                    Toast.makeText(this, "Your Dashboard", Toast.LENGTH_SHORT).show()
-                   myfragment = dashboardFragment()
-               }
+                   val fragmentTransaction = supportFragmentManager.beginTransaction()
+                   val mfrag:Fragment = dashboardFragment()
+                   mfrag.arguments = data
+                   fragmentTransaction.replace(R.id.container, mfrag)
+                   fragmentTransaction.addToBackStack(null)
+                   fragmentTransaction.commit()
+                   }
 
            }
-//           if (myfragment != null) {
-//               loadFragment(myfragment)
-//           }
 
-           drawerLayout.closeDrawer(GravityCompat.START)
+          drawerLayout.closeDrawer(GravityCompat.START)
            true
 
 
        }
 
 
+
+
+    }
+    override fun onBackPressed() {
+        val newfrag:Fragment? = supportFragmentManager.findFragmentById(R.id.container)
+        if (newfrag!=null){
+            val fragmentTransaction = supportFragmentManager.beginTransaction()
+            fragmentTransaction.remove(newfrag)
+            fragmentTransaction.commit()
+        }
+        super.onBackPressed()
     }
 
 

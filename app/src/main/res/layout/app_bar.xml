@@ -12,6 +12,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/mytoolbar"/>
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Your page"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textSize="30dp"-->
+<!--            android:textColor="@color/white"/>-->
+
+
 
     </com.google.android.material.appbar.AppBarLayout>
 
