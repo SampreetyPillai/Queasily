@@ -61,6 +61,7 @@ class upcomingFragment : Fragment() {
         val rec:RecyclerView = view.findViewById(R.id.qupcoming)
 
         rec.layoutManager = layoutManager
+
         adapter = quizAdapter(quizArrayList,upcomingFragment())
 
         rec.adapter = adapter
