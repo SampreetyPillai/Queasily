@@ -1,9 +1,11 @@
 package com.example.queasily
 
+import android.content.ContentValues.TAG
 import android.media.MediaPlayer
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -29,13 +31,14 @@ class Questions : AppCompatActivity() {
         var Time:String? = LocalDateTime.now().toString()
 
         val currIntent = getIntent()
-//        Time = currIntent.getStringExtra("Time")
-//        val qno:Int = currIntent.getIntExtra("qno",0)
-//        val quizid:String? = currIntent.getStringExtra("quizid")
-//        val USERNAME:String? = currIntent.getStringExtra("USERNAME")
-//
-//        val btn2=findViewById<Button>(R.id.button)
-//        btn2.setOnClickListener{
+        val QUIZNAME:String? =currIntent.getStringExtra("QUIZNAME")
+        val QUIZTEACHER:String? =currIntent.getStringExtra("QUIZTEACHER")
+        val QUIZPUBLISH:String? =currIntent.getStringExtra("QUIZPUBLISH")
+        val QUIZEND:String? =currIntent.getStringExtra("QUIZEND")
+        val QUIZDURATION:String? =currIntent.getStringExtra("QUIZDURATION")
+        val USERNAME:String? = currIntent.getStringExtra("USERNAME")
+        Log.d(TAG, "The timings for the quiz are ${QUIZPUBLISH} and ${QUIZEND}")
+
             var ms = 0
             mediaPlayer = MediaPlayer.create(this, R.raw.alarm)
 

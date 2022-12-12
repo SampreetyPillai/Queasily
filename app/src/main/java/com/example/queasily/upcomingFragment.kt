@@ -1,11 +1,15 @@
 package com.example.queasily
 
+import android.content.ContentValues.TAG
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.DocumentChange
@@ -14,6 +18,11 @@ import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.lang.reflect.Array.get
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,7 +41,7 @@ class upcomingFragment : Fragment() {
     private var layoutManager: RecyclerView.LayoutManager?= null
     private lateinit var quizArrayList: ArrayList<quiz_data>
     private var adapter: RecyclerView.Adapter<quizAdapter.ViewHolder>? = null
-    private var my_username:String?=null
+    var my_username:String?=null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +62,7 @@ class upcomingFragment : Fragment() {
         my_username = USERNAME
         val view:View = inflater.inflate(R.layout.fragment_upcoming, container, false)
 //        view.findViewById<TextView>(R.id.sample_upcoming).text = "This is the username " +USERNAME.toString()
+
 
         quizArrayList = arrayListOf()
 
@@ -75,9 +85,36 @@ class upcomingFragment : Fragment() {
         val mydb = Firebase.firestore
         mydb.collection("quiz_details")
             .addSnapshotListener(object: EventListener<QuerySnapshot> {
+                @RequiresApi(Build.VERSION_CODES.O)
                 override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
                     for (dc: DocumentChange in value?.documentChanges!!){
                         if(dc.type== DocumentChange.Type.ADDED){
+
+//                            val myobj:quiz_data = dc.document.toObject(quiz_data::class.java)
+//                            val QUIZEND:String? = myobj.quiz_end
+//
+////                            yyyy-MM-dd HH:mm:ss.SSS
+//
+//                            val formatted = LocalDateTime.parse(QUIZEND)
+//                            var present:Boolean = false
+//                            val thecurr = formatted.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"))
+//                            if(my_username!=null){
+//                                mydb.collection(my_username!!).get().addOnSuccessListener { result->
+//                                    for(mydoc in result){
+//                                        if (mydoc.id==dc.document.id){
+//                                            present = true
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                            if (formatted>LocalDateTime.now()) {
+//                                Log.d(TAG, "It is upcoming")
+//                            }else{
+//                                Log.d(TAG, "Date has gone")
+//                            }
+
+
+
                             quizArrayList.add(dc.document.toObject(quiz_data::class.java))
 
 

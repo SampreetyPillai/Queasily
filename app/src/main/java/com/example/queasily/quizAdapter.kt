@@ -52,6 +52,13 @@ class quizAdapter(private val qlist:ArrayList<quiz_data>, private val context: u
 
             if (getContext() !=null){
                 val newIntent = Intent(cont, Questions::class.java)
+                newIntent.putExtra("QUIZNAME", curr.quizname)
+                newIntent.putExtra("QUIZTEACHER", curr.teacher_name)
+                newIntent.putExtra("QUIZPUBLISH", curr.quiz_publish)
+                newIntent.putExtra("QUIZEND", curr.quiz_end)
+                newIntent.putExtra("QUIZDURATION", curr.quiz_duration)
+                newIntent.putExtra("QUIZNAME", curr.quizname)
+                newIntent.putExtra("USERNAME", context.my_username)
                 startActivity(cont,newIntent, bundle)
             }
 
