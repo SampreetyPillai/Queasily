@@ -12,8 +12,13 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
+
+public var status:MutableMap<String,String> = mutableMapOf()
+
+
 class LoginActivity : AppCompatActivity() {
     private val fAuth = Firebase.auth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -47,6 +52,15 @@ class LoginActivity : AppCompatActivity() {
                                 newIntent.putExtra("USERNAME", MAIL.getText().toString())
                                 startActivity(newIntent)
                                 finish()
+
+                                db.collection(MAIL.getText().toString()).get().addOnSuccessListener{
+                                    givenQuiz->
+
+                                    for(thisq in givenQuiz){
+                                        status[thisq.id] = "attempted"
+
+                                    }
+                                }
 
 
                                 Toast.makeText(this,"Login successful", Toast.LENGTH_SHORT).show()

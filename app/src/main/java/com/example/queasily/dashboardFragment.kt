@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.util.ResourceBundle.getBundle
 
 // TODO: Rename parameter arguments, choose names that match
@@ -24,6 +26,7 @@ class dashboardFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    //private lateinit var mycontact:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,20 +41,52 @@ class dashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val db  = Firebase.firestore
 //
 
         val USERNAME = arguments?.getString(ARG_NAME)
 
-        Log.d(TAG, "the username is ${USERNAME}")
+
+
+
+       // Log.d(TAG, " ${myname} and ${mycontact}")
 
         var view:View = inflater.inflate(R.layout.fragment_dashboard, container, false)
 
-        view.findViewById<TextView>(R.id.sample).text = USERNAME.toString()
+ //       getAtt()
+
+//
+//        db.collection("users").get().addOnSuccessListener { result->
+//
+//            for(document in result){
+//
+//                if(document.data.get("USERNAME").toString()==USERNAME){
+//                    mycontact = document.data.get("CONTACT").toString()
+//
+//
+//                   //
+//
+//                }
+//            }
+//        }
+
+       // Log.d(TAG, "contact is ${mycontact}")
+
+
+       // view.findViewById<TextView>(R.id.your_name).text = myname
+        view.findViewById<TextView>(R.id.your_email).text = USERNAME.toString()
+        //view.findViewById<TextView>(R.id.your_contact).text = mycontact
+
         return view
     }
 
+//    fun getAtt(){
+//
+//    }
+
     companion object {
         const val ARG_NAME = "USERNAME"
+
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
@@ -62,12 +97,13 @@ class dashboardFragment : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param0:String,param1: String, param2: String) =
+        fun newInstance(param0:String,param1: String, param2: String,param3:String) =
             dashboardFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
                     putString(ARG_NAME, param0)
+
                 }
 
             }

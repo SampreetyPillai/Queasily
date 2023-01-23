@@ -23,16 +23,16 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [upcomingFragment.newInstance] factory method to
+ * Use the [missedFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class upcomingFragment : Fragment() {
+class missedFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private var layoutManager: RecyclerView.LayoutManager?= null
-    private lateinit var quizArrayList: ArrayList<quiz_data>
-    private var adapter: RecyclerView.Adapter<quizAdapter.ViewHolder>? = null
+    private lateinit var quizArrayList_missed: ArrayList<quiz_data>
+    private var adapter: RecyclerView.Adapter<quizAdapter_missed.ViewHolder>? = null
     var my_username:String?=null
 
 
@@ -49,22 +49,21 @@ class upcomingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         val USERNAME = arguments?.getString(dashboardFragment.ARG_NAME)
         my_username = USERNAME
-        val view:View = inflater.inflate(R.layout.fragment_upcoming, container, false)
+        val view:View = inflater.inflate(R.layout.fragment_missed, container, false)
 //        view.findViewById<TextView>(R.id.sample_upcoming).text = "This is the username " +USERNAME.toString()
 
 
-        quizArrayList = arrayListOf()
+        quizArrayList_missed = arrayListOf()
 
         layoutManager = LinearLayoutManager(requireContext())
 
-        val rec:RecyclerView = view.findViewById(R.id.qupcoming)
+        val rec:RecyclerView = view.findViewById(R.id.qmissed)
 
         rec.layoutManager = layoutManager
 
-        adapter = quizAdapter(quizArrayList,upcomingFragment())
+        adapter = quizAdapter_missed(quizArrayList_missed,missedFragment())
 
         rec.adapter = adapter
 
@@ -72,6 +71,7 @@ class upcomingFragment : Fragment() {
 
         EventChangeListener()
         return view
+
     }
     fun EventChangeListener(){
         val mydb = Firebase.firestore
@@ -87,40 +87,9 @@ class upcomingFragment : Fragment() {
 //
 //                            val formatted = LocalDateTime.parse(QUIZEND)
 //                            var present:Boolean = false
-                            if(status[dc.document.toObject(quiz_data::class.java).quizname]=="upcoming"){
-                                quizArrayList.add(dc.document.toObject(quiz_data::class.java))
+                            if(status[dc.document.toObject(quiz_data::class.java).quizname]=="missed"){
+                                quizArrayList_missed.add(dc.document.toObject(quiz_data::class.java))
                             }
-
-
-                            //val thecurr = formatted.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"))
-//                            if (formatted<LocalDateTime.now()) {
-//                                Log.d(TAG, "missed")
-//                            }
-//                            else{
-//                                Log.d(TAG,"inside the else")
-//
-//                                if(my_username!=null){
-//                                    Log.d(TAG,"username is not null ${my_username}")
-//
-//                                    mydb.collection(my_username!!).get().addOnSuccessListener { res->
-//                                        Log.d(TAG, "here")
-//                                        for(mydoc in res){
-//                                            Log.d(TAG,"${mydoc.id}")
-//                                            if (mydoc.id.toString()==dc.document.id.toString()){
-//                                                Log.d(TAG,"attempted")
-//                                                present = true
-//                                                break
-//
-//                                            }
-//                                        }
-//                                    }
-//                                }
-//                                Log.d(TAG,"PRESENT == ${present}")
-//                                if (present==false){
-//                                    Log.d(TAG,"${dc.document.id}")
-//                                    quizArrayList.add(dc.document.toObject(quiz_data::class.java))
-//                                }
-//                            }
 
                         }
                     }
@@ -129,24 +98,24 @@ class upcomingFragment : Fragment() {
             })
     }
 
-    companion object {
-        const val ARG_NAME = "USERNAME"
+                            companion object {
+        const val ARG_NAME_M = "USERNAME"
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment upcomingFragment.
+         * @return A new instance of fragment missedFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param0:String,param1: String, param2: String) =
-            upcomingFragment().apply {
+            missedFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
-                    putString(ARG_NAME, param0)
+                    putString(ARG_NAME_M, param0)
                 }
             }
     }

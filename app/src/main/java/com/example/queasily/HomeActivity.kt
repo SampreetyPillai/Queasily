@@ -28,11 +28,14 @@ class HomeActivity : AppCompatActivity() {
 
     public var ongoing:String = "dashboard"
     public var USERNAME:String = ""
+    val db = Firebase.firestore
     var dictionary:MutableMap<String,String> = mutableMapOf()
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView
     private lateinit var toolbar: androidx.appcompat.widget.Toolbar
+
+    private lateinit var myname:String
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,49 +54,53 @@ class HomeActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.mytoolbar)
 
 
-        val db = Firebase.firestore
-        db.collection("quiz_details").get().addOnSuccessListener { result->
-            for (document in result){
-                val t= document.data.get("quiz_end").toString()
-                val formatted = LocalDateTime.parse(t)
 
-                if (formatted<LocalDateTime.now()){
-                    dictionary[document.id] ="missed"
-                }else{
-                    var present = false
-                    db.collection(this_username!!).get().addOnSuccessListener{newr->
-                        for (newdoc in newr){
-                            if (newdoc.id==document.id){
-                                present = true
-                                break
-                            }
-                        }
-                    }
-                    if (present){
-                        dictionary[document.id] ="completed"
+
+
+
+        db.collection(USERNAME).get().addOnSuccessListener {
+            result->
+            for(document in result) {
+
+            Log.d(TAG,document.id+" "+status[document.id] )
+            }
+        }
+
+        db.collection("quiz_details").get().addOnSuccessListener {
+                result->
+            for(document in result) {
+
+                val endtime:String? = document.data.get("quiz_end").toString()
+
+                val formatted = LocalDateTime.parse(endtime)
+                if (status[document.data.get("quizname").toString()]!="attempted"){
+                    if(formatted< LocalDateTime.now()){
+
+                        status[document.data.get("quizname").toString()]="missed"
+
                     }else{
-                        dictionary[document.id] ="upcoming"
-                    }
 
+                        status[document.data.get("quizname").toString()]="upcoming"
+
+                    }
                 }
 
-
+                Log.d(TAG,document.data.get("quizname").toString()+" "+status[document.data.get("quizname").toString()])
             }
         }
 
 
-//        setSupportActionBar(toolbar)
-//        val toggle:ActionBarDrawerToggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.OpenDrawer, R.string.CloseDrawer)
-//
-//        drawerLayout.addDrawerListener(toggle)
-//        toggle.syncState()
+        var mycontact = ""
+
+
+
 
         val data = Bundle()
         data.putString("USERNAME", USERNAME)
+        //data.putString("NAME", myname)
+
 
         Log.d(TAG, "this is the username ${USERNAME}")
-//        val mfrag:Fragment = dashboardFragment()
-//        mfrag.arguments = data
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val mfrag:Fragment = dashboardFragment()
@@ -125,7 +132,7 @@ class HomeActivity : AppCompatActivity() {
                R.id.past_menu -> {
                    Toast.makeText(this, "Past quizes", Toast.LENGTH_SHORT).show()
                    val fragmentTransaction = supportFragmentManager.beginTransaction()
-                   val mfrag:Fragment = upcomingFragment()
+                   val mfrag:Fragment = attemptedFragment()
                    mfrag.arguments = data
                    fragmentTransaction.replace(R.id.container, mfrag)
                    fragmentTransaction.addToBackStack(null)
@@ -134,7 +141,7 @@ class HomeActivity : AppCompatActivity() {
                R.id.missed_menu -> {
                    Toast.makeText(this, "Missed Quizzes", Toast.LENGTH_SHORT).show()
                    val fragmentTransaction = supportFragmentManager.beginTransaction()
-                   val mfrag:Fragment = upcomingFragment()
+                   val mfrag:Fragment = missedFragment()
                    mfrag.arguments = data
                    fragmentTransaction.replace(R.id.container, mfrag)
                    fragmentTransaction.addToBackStack(null)
@@ -143,7 +150,7 @@ class HomeActivity : AppCompatActivity() {
                R.id.dashboard_menu -> {
                    Toast.makeText(this, "Your Dashboard", Toast.LENGTH_SHORT).show()
                    val fragmentTransaction = supportFragmentManager.beginTransaction()
-                   val mfrag:Fragment = upcomingFragment()
+                   val mfrag:Fragment = dashboardFragment()
                    mfrag.arguments = data
                    fragmentTransaction.replace(R.id.container, mfrag)
                    fragmentTransaction.addToBackStack(null)

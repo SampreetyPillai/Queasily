@@ -8,19 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import java.security.AccessControlContext
 import java.security.AccessController
-import java.security.AccessController.getContext
+
+class quizAdapter_past(private val qlist:ArrayList<quiz_data>, private val context: upcomingFragment): RecyclerView.Adapter<quizAdapter_past.ViewHolder>() {
 
 
-
-class quizAdapter(private val qlist:ArrayList<quiz_data>, private val context: upcomingFragment): RecyclerView.Adapter<quizAdapter.ViewHolder>()  {
-
-        private lateinit var cont:Context
-        private lateinit var rootView:View
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): quizAdapter.ViewHolder{
+    private lateinit var cont: Context
+    private lateinit var rootView: View
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): quizAdapter_past.ViewHolder{
 
         val v = LayoutInflater.from(parent.context).inflate(R.layout.quiz_layout, parent, false)
 
@@ -33,7 +30,7 @@ class quizAdapter(private val qlist:ArrayList<quiz_data>, private val context: u
         return qlist.size
     }
 
-    override fun onBindViewHolder(holder:quizAdapter.ViewHolder, position: Int){
+    override fun onBindViewHolder(holder:quizAdapter_past.ViewHolder, position: Int){
 
 
         val curr: quiz_data = qlist[position]
@@ -46,7 +43,7 @@ class quizAdapter(private val qlist:ArrayList<quiz_data>, private val context: u
             // Context = this.context
 
 
-            if (getContext() !=null){
+            if (AccessController.getContext() !=null){
                 val newIntent = Intent(cont, Questions::class.java)
                 newIntent.putExtra("QUIZNAME", curr.quizname)
                 newIntent.putExtra("QUIZTEACHER", curr.teacher_name)
@@ -55,14 +52,14 @@ class quizAdapter(private val qlist:ArrayList<quiz_data>, private val context: u
                 newIntent.putExtra("QUIZDURATION", curr.quiz_duration)
                 newIntent.putExtra("QUIZNAME", curr.quizname)
                 newIntent.putExtra("USERNAME", context.my_username)
-                startActivity(cont,newIntent, bundle)
+                ContextCompat.startActivity(cont, newIntent, bundle)
             }
 
 
         }
 
     }
-    inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
 
         var quiz_name: TextView = itemView.findViewById(R.id.qname)
@@ -70,6 +67,15 @@ class quizAdapter(private val qlist:ArrayList<quiz_data>, private val context: u
         var teacher_name: TextView = itemView.findViewById(R.id.teacher)
         var mybutton: Button = itemView.findViewById(R.id.attempt)
 
+
+//        fun ViewHolder(itemView: View) {
+//            mybutton.setOnClickListener() {
+//                val newIntent = Intent(itemView.context, PageActivity::class.java)
+//                itemView.context.startActivity(newIntent)
+//            }
+//
+//
+//        }
 
 
     }
