@@ -38,6 +38,7 @@ class quizAdapter(private val qlist:ArrayList<quiz_data>, private val context: u
 
         val curr: quiz_data = qlist[position]
         holder.quiz_name.text = curr.quizname
+
         holder.quiz_publish.text = curr.quiz_publish
         holder.teacher_name.text = curr.teacher_name
 
@@ -45,18 +46,29 @@ class quizAdapter(private val qlist:ArrayList<quiz_data>, private val context: u
             val bundle = Bundle()
             // Context = this.context
 
+//            if( status[curr.quizname]!="attempted"){
+                if (getContext() !=null){
+                    val newIntent = Intent(cont, Questions::class.java)
+                    newIntent.putExtra("QUIZNAME", curr.quizname)
+                    newIntent.putExtra("QUIZTEACHER", curr.teacher_name)
+                    newIntent.putExtra("QUIZPUBLISH", curr.quiz_publish)
+                    newIntent.putExtra("QUIZEND", curr.quiz_end)
+                    newIntent.putExtra("QUIZDURATION", curr.quiz_duration)
+                    newIntent.putExtra("QUIZNAME", curr.quizname)
+                    newIntent.putExtra("USERNAME", context.my_username)
+                    startActivity(cont,newIntent, bundle)
+                }
 
-            if (getContext() !=null){
-                val newIntent = Intent(cont, Questions::class.java)
-                newIntent.putExtra("QUIZNAME", curr.quizname)
-                newIntent.putExtra("QUIZTEACHER", curr.teacher_name)
-                newIntent.putExtra("QUIZPUBLISH", curr.quiz_publish)
-                newIntent.putExtra("QUIZEND", curr.quiz_end)
-                newIntent.putExtra("QUIZDURATION", curr.quiz_duration)
-                newIntent.putExtra("QUIZNAME", curr.quizname)
-                newIntent.putExtra("USERNAME", context.my_username)
-                startActivity(cont,newIntent, bundle)
-            }
+//            }
+//            else{
+//
+//                val newIntent = Intent(cont, AnalysisActivity::class.java)
+//                startActivity(cont,newIntent, bundle)
+//
+//            }
+
+
+
 
 
         }

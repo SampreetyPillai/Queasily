@@ -92,35 +92,7 @@ class upcomingFragment : Fragment() {
                             }
 
 
-                            //val thecurr = formatted.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"))
-//                            if (formatted<LocalDateTime.now()) {
-//                                Log.d(TAG, "missed")
-//                            }
-//                            else{
-//                                Log.d(TAG,"inside the else")
-//
-//                                if(my_username!=null){
-//                                    Log.d(TAG,"username is not null ${my_username}")
-//
-//                                    mydb.collection(my_username!!).get().addOnSuccessListener { res->
-//                                        Log.d(TAG, "here")
-//                                        for(mydoc in res){
-//                                            Log.d(TAG,"${mydoc.id}")
-//                                            if (mydoc.id.toString()==dc.document.id.toString()){
-//                                                Log.d(TAG,"attempted")
-//                                                present = true
-//                                                break
-//
-//                                            }
-//                                        }
-//                                    }
-//                                }
-//                                Log.d(TAG,"PRESENT == ${present}")
-//                                if (present==false){
-//                                    Log.d(TAG,"${dc.document.id}")
-//                                    quizArrayList.add(dc.document.toObject(quiz_data::class.java))
-//                                }
-//                            }
+
 
                         }
                     }

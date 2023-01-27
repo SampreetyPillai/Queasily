@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.ResourceBundle.getBundle
@@ -16,6 +17,7 @@ import java.util.ResourceBundle.getBundle
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+
 
 /**
  * A simple [Fragment] subclass.
@@ -26,7 +28,7 @@ class dashboardFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    //private lateinit var mycontact:String
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +36,8 @@ class dashboardFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+
     }
 
     override fun onCreateView(
@@ -41,46 +45,35 @@ class dashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val db  = Firebase.firestore
+
 //
 
         val USERNAME = arguments?.getString(ARG_NAME)
-
-
-
-
-       // Log.d(TAG, " ${myname} and ${mycontact}")
+//        if (USERNAME != null) {
+//            Username = USERNAME
+//        }
 
         var view:View = inflater.inflate(R.layout.fragment_dashboard, container, false)
 
- //       getAtt()
+       // getAtt()
+       // Log.d(TAG, " ${Username} and ${mycontact}")
+        Log.d(TAG, " THE_USERNAME ${THE_USERNAME}")
 
-//
-//        db.collection("users").get().addOnSuccessListener { result->
-//
-//            for(document in result){
-//
-//                if(document.data.get("USERNAME").toString()==USERNAME){
-//                    mycontact = document.data.get("CONTACT").toString()
-//
-//
-//                   //
-//
-//                }
-//            }
-//        }
-
-       // Log.d(TAG, "contact is ${mycontact}")
-
-
-       // view.findViewById<TextView>(R.id.your_name).text = myname
-        view.findViewById<TextView>(R.id.your_email).text = USERNAME.toString()
-        //view.findViewById<TextView>(R.id.your_contact).text = mycontact
+        view.findViewById<TextView>(R.id.your_email).text = "USERNAME: " +THE_USERNAME.toString()
+        view.findViewById<TextView>(R.id.your_contact).text ="CONTACT: "+ MYCONTACT.toString()
+        view.findViewById<TextView>(R.id.your_name).text = "NAME: "+THE_NAME.toString()
 
         return view
     }
 
 //    fun getAtt(){
+//
+//        val db = Firebase.firestore
+//
+//
+//
+//
+//
 //
 //    }
 

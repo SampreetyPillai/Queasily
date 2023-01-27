@@ -14,6 +14,9 @@ import com.google.firebase.ktx.Firebase
 
 
 public var status:MutableMap<String,String> = mutableMapOf()
+public var THE_USERNAME: String = ""
+public var MYCONTACT: String = ""
+public var THE_NAME: String = ""
 
 
 class LoginActivity : AppCompatActivity() {
@@ -38,6 +41,10 @@ class LoginActivity : AppCompatActivity() {
 
                         Log.d(TAG,"inside loop")
                         val name = document.data.get("USERNAME")
+                        THE_USERNAME = name.toString()
+                        MYCONTACT = document.data.get("CONTACT").toString()
+                        THE_NAME = document.data.get("NAME").toString()
+
                         val password = document.data.get("PASSWORD")
                         //Log.d(TAG, "${name} => ${usern.getText().toString()}")
                         if (name == MAIL.getText().toString() && password == PASSWORD.getText().toString()) {
