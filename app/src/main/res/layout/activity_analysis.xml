@@ -5,5 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AnalysisActivity">
+    <TextView
+        android:id="@+id/totalquestions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total number of questions"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/correctanswers"
+        android:layout_height="wrap_content"
+        android:text="Your correct answers"
+        app:layout_constraintTop_toBottomOf="@+id/totalquestions"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/marking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Marking Scheme"
+        app:layout_constraintTop_toBottomOf="@+id/correctanswers"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Final score"
+        android:id="@+id/finalscore"
+        app:layout_constraintTop_toBottomOf="@+id/marking"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barchart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/finalscore"
+        tools:layout_editor_absoluteX="0dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

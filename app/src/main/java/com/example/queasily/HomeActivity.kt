@@ -61,6 +61,7 @@ class HomeActivity : AppCompatActivity() {
         db.collection(USERNAME).get().addOnSuccessListener {
             result->
             for(document in result) {
+                status[document.id] = "attempted"
 
             Log.d(TAG,document.id+" "+status[document.id] )
             }

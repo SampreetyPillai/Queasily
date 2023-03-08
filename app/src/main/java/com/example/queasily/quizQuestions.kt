@@ -68,6 +68,7 @@ class quizQuestions(private val questionlist:ArrayList<question_data>, private v
         holder.option4.setOnClickListener(){
 
             if (q_no != null) {
+
                 this.activity.addAnswer(q_no, "4")
             }
         }

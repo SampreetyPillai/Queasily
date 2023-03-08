@@ -37,6 +37,7 @@ class quizAdapter_past(private val qlist:ArrayList<quiz_data>, private val conte
         holder.quiz_name.text = curr.quizname
         holder.quiz_publish.text = curr.quiz_publish
         holder.teacher_name.text = curr.teacher_name
+        holder.mybutton.text = "Analysis"
 
         holder.mybutton.setOnClickListener{
             val bundle = Bundle()
@@ -44,7 +45,7 @@ class quizAdapter_past(private val qlist:ArrayList<quiz_data>, private val conte
 
 
             if (AccessController.getContext() !=null){
-                val newIntent = Intent(cont, Questions::class.java)
+                val newIntent = Intent(cont, AnalysisActivity::class.java)
                 newIntent.putExtra("QUIZNAME", curr.quizname)
                 newIntent.putExtra("QUIZTEACHER", curr.teacher_name)
                 newIntent.putExtra("QUIZPUBLISH", curr.quiz_publish)

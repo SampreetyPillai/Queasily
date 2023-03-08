@@ -37,6 +37,7 @@ class quizAdapter_missed(private val qlist:ArrayList<quiz_data>, private val con
         holder.quiz_name.text = curr.quizname
         holder.quiz_publish.text = curr.quiz_publish
         holder.teacher_name.text = curr.teacher_name
+        holder.mybutton.text = "Go To Quiz"
 
         holder.mybutton.setOnClickListener{
             val bundle = Bundle()

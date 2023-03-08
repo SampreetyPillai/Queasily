@@ -39,15 +39,17 @@ class quizAdapter(private val qlist:ArrayList<quiz_data>, private val context: u
         val curr: quiz_data = qlist[position]
         holder.quiz_name.text = curr.quizname
 
+
         holder.quiz_publish.text = curr.quiz_publish
         holder.teacher_name.text = curr.teacher_name
+        holder.mybutton.text = "Go To Quiz"
 
         holder.mybutton.setOnClickListener{
             val bundle = Bundle()
             // Context = this.context
 
 //            if( status[curr.quizname]!="attempted"){
-                if (getContext() !=null){
+            if (getContext() !=null){
                     val newIntent = Intent(cont, Questions::class.java)
                     newIntent.putExtra("QUIZNAME", curr.quizname)
                     newIntent.putExtra("QUIZTEACHER", curr.teacher_name)

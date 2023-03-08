@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:backgroundTint="@color/back"
     android:layout_margin="5dp"
     android:layout_marginTop="50dp">
 
@@ -60,69 +61,69 @@
 
         </RadioGroup>
 
-<!--        <CheckBox-->
-<!--            android:id="@+id/option1c"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/question_desc" />-->
+        <!--        <CheckBox-->
+        <!--            android:id="@+id/option1c"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/question_desc" />-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/option1"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="Option 1 contents"-->
-<!--            android:layout_marginTop="12dp"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/option1c"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/question_desc" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/option1"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:hint="Option 1 contents"-->
+        <!--            android:layout_marginTop="12dp"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/option1c"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/question_desc" />-->
 
-<!--        <CheckBox-->
-<!--            android:id="@+id/option2c"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/option1" />-->
+        <!--        <CheckBox-->
+        <!--            android:id="@+id/option2c"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/option1" />-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/option2"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="Option 2 contents"-->
-<!--            android:layout_marginTop="12dp"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/option2c"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/option1" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/option2"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:hint="Option 2 contents"-->
+        <!--            android:layout_marginTop="12dp"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/option2c"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/option1" />-->
 
-<!--        <CheckBox-->
-<!--            android:id="@+id/option3c"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/option2" />-->
+        <!--        <CheckBox-->
+        <!--            android:id="@+id/option3c"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/option2" />-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/option3"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="Option 3 contents"-->
-<!--            android:layout_marginTop="12dp"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/option3c"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/option2" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/option3"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:hint="Option 3 contents"-->
+        <!--            android:layout_marginTop="12dp"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/option3c"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/option2" />-->
 
-<!--        <CheckBox-->
-<!--            android:id="@+id/option4c"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/option3" />-->
+        <!--        <CheckBox-->
+        <!--            android:id="@+id/option4c"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/option3" />-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/option4"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="Option 4 contents"-->
-<!--            android:layout_marginTop="12dp"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/option4c"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/option3" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/option4"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:hint="Option 4 contents"-->
+        <!--            android:layout_marginTop="12dp"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/option4c"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/option3" />-->
 
 
 

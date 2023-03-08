@@ -60,14 +60,14 @@ class LoginActivity : AppCompatActivity() {
                                 startActivity(newIntent)
                                 finish()
 
-                                db.collection(MAIL.getText().toString()).get().addOnSuccessListener{
-                                    givenQuiz->
-
-                                    for(thisq in givenQuiz){
-                                        status[thisq.id] = "attempted"
-
-                                    }
-                                }
+//                                db.collection(MAIL.getText().toString()).get().addOnSuccessListener{
+//                                    givenQuiz->
+//
+//                                    for(thisq in givenQuiz){
+//                                        status[thisq.id] = "attempted"
+//
+//                                    }
+//                                }
 
 
                                 Toast.makeText(this,"Login successful", Toast.LENGTH_SHORT).show()

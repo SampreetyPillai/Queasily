@@ -4,52 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".RegisterActivity">
 
     <EditText
         android:id="@+id/register_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="328dp"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
         android:hint="Enter your name"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="25dp" />
 
     <EditText
         android:id="@+id/register_contact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@drawable/ic_baseline_phone_24"
+        android:drawablePadding="10dp"
         android:hint="Enter your contact number"
-        app:layout_constraintTop_toBottomOf="@+id/register_name" />
+        app:layout_constraintTop_toBottomOf="@+id/register_name"
+        tools:layout_editor_absoluteX="25dp" />
 
     <EditText
         android:id="@+id/register_mail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:drawablePadding="10dp"
         android:hint="Enter your mail id"
         app:layout_constraintTop_toBottomOf="@+id/register_contact"
-         />
+        tools:layout_editor_absoluteX="34dp" />
 
     <EditText
+        android:id="@+id/register_pass"
+        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@drawable/ic_baseline_password_24"
+        android:drawablePadding="10dp"
         android:hint="Password"
-        android:id="@+id/register_pass"
         app:layout_constraintTop_toBottomOf="@+id/register_mail"
-        />
+        tools:layout_editor_absoluteX="34dp" />
 
     <EditText
         android:id="@+id/register_con_pass"
+        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@drawable/ic_baseline_password_24"
+        android:drawablePadding="10dp"
         android:hint="Confirm Password"
         app:layout_constraintTop_toBottomOf="@+id/register_pass"
-      />
+        tools:layout_editor_absoluteX="25dp" />
 
     <Button
         android:id="@+id/register_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="20dp"
         android:text="REGISTER"
         app:layout_constraintTop_toBottomOf="@+id/register_con_pass"
-        tools:layout_editor_absoluteX="-35dp" />
+        tools:layout_editor_absoluteX="34dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
