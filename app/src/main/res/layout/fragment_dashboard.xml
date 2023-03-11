@@ -72,6 +72,36 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:text="Change password"
+        app:layout_constraintBottom_toTopOf="@+id/changepass"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/changepass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/changepassconfirm" />
+    <EditText
+        android:id="@+id/changepassconfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:padding="5dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/passchangesubmit" />
+
+    <Button
+        android:id="@+id/passchangesubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit password"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

@@ -7,7 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -62,6 +65,42 @@ class dashboardFragment : Fragment() {
         view.findViewById<TextView>(R.id.your_email).text = "USERNAME: " +THE_USERNAME.toString()
         view.findViewById<TextView>(R.id.your_contact).text ="CONTACT: "+ MYCONTACT.toString()
         view.findViewById<TextView>(R.id.your_name).text = "NAME: "+THE_NAME.toString()
+        val changepass:EditText = view.findViewById(R.id.changepass)
+        val changepassconfirm:EditText = view.findViewById(R.id.changepassconfirm)
+        view.findViewById<Button>(R.id.button2).setOnClickListener(){
+            changepass.visibility = View.VISIBLE
+            changepass.hint = "Enter new password"
+
+            changepassconfirm.visibility = View.VISIBLE
+            changepassconfirm.hint = "Confirm password here"
+
+            view.findViewById<Button>(R.id.passchangesubmit).visibility = View.VISIBLE
+        }
+        view.findViewById<Button>(R.id.passchangesubmit).setOnClickListener(){
+            val currentpass: String = changepass.text.toString()
+            val confirmpass:String = changepass.text.toString()
+            if(currentpass!=confirmpass){
+                Toast.makeText(context,"Password not confirmed", Toast.LENGTH_SHORT).show()
+            }else{
+                var k:Int = 0
+
+                val db  = Firebase.firestore
+                db.collection("users").get().addOnSuccessListener { result->
+                    for(document in result){
+                        if (document.data.get("USERNAME")==THE_USERNAME){
+                            val id:String = document.id
+                            db.collection("users").document(id).update("PASSWORD",currentpass)
+                            k=1
+                            Toast.makeText(context,"Password changed", Toast.LENGTH_SHORT).show()
+                            break
+
+                        }
+                    }
+
+                }
+
+            }
+        }
 
         return view
     }
