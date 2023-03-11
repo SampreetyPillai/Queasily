@@ -93,6 +93,9 @@ class dashboardFragment : Fragment() {
                             k=1
                             Toast.makeText(context,"Password changed", Toast.LENGTH_SHORT).show()
                             break
+                            view.findViewById<Button>(R.id.passchangesubmit).visibility = View.GONE
+                            changepass.visibility = View.GONE
+                            changepassconfirm.visibility = View.GONE
 
                         }
                     }

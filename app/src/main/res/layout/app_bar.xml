@@ -4,6 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+<!--    android:icon="@drawable/ic_baseline_email_24"-->
+
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -11,16 +14,9 @@
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:icon="@drawable/ic_baseline_email_24"
+
             android:id="@+id/mytoolbar"/>
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Your page"-->
-<!--            android:textAlignment="center"-->
-<!--            android:textSize="30dp"-->
-<!--            android:textColor="@color/white"/>-->
-
-
 
     </com.google.android.material.appbar.AppBarLayout>
 

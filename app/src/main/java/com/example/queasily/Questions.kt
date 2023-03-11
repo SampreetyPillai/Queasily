@@ -22,6 +22,7 @@ import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.type.DateTime
+import java.sql.Types.NULL
 import java.time.LocalDateTime
 import kotlin.concurrent.fixedRateTimer
 
@@ -35,6 +36,7 @@ class Questions : AppCompatActivity() {
     private var quiz_name = ""
     public var qna: MutableMap<String, String> = mutableMapOf()
     val mydb = Firebase.firestore
+    var done:Int = 0
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +44,7 @@ class Questions : AppCompatActivity() {
         setContentView(R.layout.activity_questions)
 
         var Time:String? = LocalDateTime.now().toString()
+
 
         val currIntent = getIntent()
         val QUIZNAME:String? = currIntent.getStringExtra("QUIZNAME")
@@ -70,16 +73,30 @@ class Questions : AppCompatActivity() {
 
                 var t=String.format("%02d:%02d", min, s)
                 findViewById<TextView>(R.id.textView).text=t
-                if(ms>=8) {
+
+                if(ms>=8 && done==0) {
                     findViewById<TextView>(R.id.textView).text = "Time Up!!"
+                    done = 1
                     mediaPlayer.start()
-                   // Log.d(TAG,"time is up  ${THE_USERNAME}")
-                    if (THE_USERNAME != null) {
+                    if(THE_USERNAME!=null){
                         submitExam(THE_USERNAME)
                     }
-                    this.cancel()
 
-                }
+                    Log.d(TAG,"time is up  ${THE_USERNAME}")
+
+                    }
+//                if(ms>=12 && done ==1){
+//                    if (THE_USERNAME != null) {
+//
+//                        val newIntent = Intent(this@Questions, HomeActivity::class.java)
+//                        newIntent.putExtra("USERNAME", THE_USERNAME)
+//                        startActivity(newIntent)
+//                        finish()
+//                    }
+//
+//
+//                }
+
             }
         questionArrayList = arrayListOf()
 
@@ -109,10 +126,17 @@ class Questions : AppCompatActivity() {
 
 
     }
+    fun submitExamTimer(USERNAME:String){
+        done = 1
+        mydb.collection(USERNAME).document(quiz_name).set(qna)
+        Log.d(TAG," examination is ended ${USERNAME} ")
+    }
 
     fun submitExam(USERNAME: String){
+        done = 1
         mydb.collection(USERNAME).document(quiz_name).set(qna)
         val newIntent = Intent(this, HomeActivity::class.java)
+        newIntent.putExtra("USERNAME", THE_USERNAME)
         startActivity(newIntent)
         this.finish()
 
